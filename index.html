@@ -32,7 +32,7 @@
       muted: true;
     }
 
-   /* ✉️ Envelope */
+  /* ✉️ Envelope */
 .envelope {
   position: relative;
   width: 70vw;           /* bigger envelope */
@@ -103,6 +103,23 @@
 
 .envelope.open .flap { transform: rotateX(180deg); }
 .envelope.open .letter { top: 5%; }
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .envelope {
+    width: 90vw;
+    height: 72vw;
+  }
+  .letter {
+    width: 60%;
+    height: 50%;
+    font-size: 3vw;
+    padding: 4vw;
+  }
+  .letter h3 { font-size: 4vw; }
+  .signature { font-size: 3vw; }
+}
+
 
 /* Mobile adjustments */
 @media screen and (max-width: 480px) {
@@ -236,6 +253,7 @@
 
 </body>
 </html>
+
 
 
 
