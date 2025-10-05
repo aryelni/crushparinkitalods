@@ -1,6 +1,9 @@
 const envelope = document.getElementById('envelope');
 const video = document.getElementById('bg-video');
 
+// Make sure video is muted (required for autoplay in most browsers)
+video.muted = true;
+
 envelope.addEventListener('click', () => {
     envelope.classList.toggle('open');
 
@@ -8,7 +11,8 @@ envelope.addEventListener('click', () => {
         // Play background video
         video.play().catch(err => console.log("Autoplay blocked for video:", err));
     } else {
-        // Pause background video
+        // Pause background video and reset to start
         video.pause();
+        video.currentTime = 0; // resets video
     }
 });
