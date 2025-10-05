@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confession 💌</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
   <style>
@@ -29,19 +29,18 @@
       transform: translate(-50%, -50%);
       z-index: -1;
       filter: brightness(0.5) saturate(1.1);
-      muted: true;
     }
 
     /* ✉️ Envelope */
     .envelope {
       position: relative;
-      width: 40vw;
-      height: 26vw;
-      max-width: 400px;
-      max-height: 260px;
+      width: 60vw;
+      height: 40vw;
+      max-width: 600px;
+      max-height: 400px;
       background: linear-gradient(145deg, #ff857a, #ff6f61);
       cursor: pointer;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       transition: transform 0.4s ease;
       overflow: hidden;
@@ -67,15 +66,15 @@
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      width: 90%;
-      height: 90%;
+      width: 85%;
+      height: 85%;
       background: #fff;
-      padding: 4vw;
+      padding: 3vw;
       box-sizing: border-box;
       border-radius: 10px;
-      font-size: 3vw;
+      font-size: 1.3vw;
       line-height: 1.6;
-      text-align: left;
+      text-align: justify;
       overflow-y: auto;
       transition: top 0.6s ease;
       box-shadow: 0 6px 15px rgba(0,0,0,0.25);
@@ -85,7 +84,7 @@
 
     .letter h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 4vw;
+      font-size: 1.8vw;
       color: #b23a48;
       margin-top: 0;
     }
@@ -96,11 +95,11 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       margin-top: 2vw;
-      font-size: 3vw;
+      font-size: 1.3vw;
     }
 
     .envelope.open .flap { transform: rotateX(180deg); }
-    .envelope.open .letter { top: 5%; }
+    .envelope.open .letter { top: 7%; }
 
     /* ❤️ Floating Hearts */
     .heart {
@@ -116,25 +115,33 @@
       100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
     }
 
-    /* Mobile tweaks */
-    @media screen and (max-width: 480px) {
-      .envelope { width: 60vw; height: 40vw; }
-      .letter { font-size: 4vw; padding: 5vw; }
+    /* 📱 Mobile fixes */
+    @media (max-width: 600px) {
+      .envelope {
+        width: 90vw;
+        height: 65vw;
+        max-width: none;
+        max-height: none;
+      }
+
+      .letter {
+        width: 90%;
+        height: 90%;
+        padding: 5vw;
+        font-size: 3.5vw;
+      }
+
       .letter h3 { font-size: 5vw; }
-      .signature { font-size: 4vw; }
-      .heart { font-size: 5vw; }
+      .signature { font-size: 3.8vw; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎥 Background Video -->
   <video id="bg-video" loop muted playsinline>
     <source src="https://res.cloudinary.com/dithz3pcp/video/upload/romantic-bg_bcyne3.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 
-  <!-- ✉️ Envelope -->
   <div class="envelope" id="envelope">
     <div class="flap"></div>
     <div class="letter" id="letter">
@@ -161,7 +168,6 @@
     </div>
   </div>
 
-  <!-- 🎵 Background Music -->
   <audio id="bg-music" loop>
     <source src="https://res.cloudinary.com/dithz3pcp/video/upload/v1759680311/burnout_ya25vl.mp3" type="audio/mpeg">
   </audio>
@@ -171,16 +177,15 @@
     const music = document.getElementById('bg-music');
     const video = document.getElementById('bg-video');
 
-    // Play/pause music and video on envelope click
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
-        music.play().catch(err => console.log("Autoplay blocked for audio:", err));
-        video.play().catch(err => console.log("Autoplay blocked for video:", err));
+        music.play().catch(err => console.log("Autoplay blocked:", err));
+        video.play().catch(err => console.log("Autoplay blocked:", err));
       } else {
         music.pause();
         video.pause();
-        video.currentTime = 0; // reset video
+        video.currentTime = 0;
       }
     });
 
