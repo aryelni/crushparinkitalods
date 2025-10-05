@@ -43,9 +43,7 @@
       overflow: hidden;
     }
 
-    .envelope:hover {
-      transform: scale(1.03);
-    }
+    .envelope:hover { transform: scale(1.03); }
 
     .flap {
       position: absolute;
@@ -88,13 +86,8 @@
       margin-top: 0;
     }
 
-    .envelope.open .flap {
-      transform: rotateX(180deg);
-    }
-
-    .envelope.open .letter {
-      top: 5%;
-    }
+    .envelope.open .flap { transform: rotateX(180deg); }
+    .envelope.open .letter { top: 5%; }
 
     .signature {
       text-align: right;
@@ -122,14 +115,14 @@
 <body>
   <!-- 🎥 Background Video -->
   <video id="bg-video" autoplay muted loop playsinline>
-    <source src="romantic-bg.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/v1759680311/romantic-bg.mp4" type="video/mp4">
   </video>
 
   <!-- ✉️ Envelope -->
   <div class="envelope" id="envelope">
     <div class="flap"></div>
     <div class="letter" id="letter">
-      <h3>Dear Shaira,</h3>  
+      <h3>Dear Shaira,</h3>
       <p>
         I just wanted to tell you nga crush gihapon tika until now.  
         1 year and months najud tika crush shai, or I guess almost 2 years na (solid admirer).  
@@ -154,24 +147,24 @@
 
   <!-- 🎵 Background Music -->
   <audio id="bg-music" loop>
-    <source src="burnout.mp3" type="audio/mpeg">
+    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/v1759680311/burnout_ya25vl.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     const envelope = document.getElementById('envelope');
     const music = document.getElementById('bg-music');
 
-    // Open envelope + play music
+    // Play music on envelope click
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
-        music.play().catch(err => console.log("Autoplay blocked for audio:", err));
+        music.play().catch(err => console.log("Autoplay blocked:", err));
       } else {
         music.pause();
       }
     });
 
-    // ❤️ Floating hearts animation
+    // Floating hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
