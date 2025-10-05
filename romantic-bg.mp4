@@ -1,1 +1,5 @@
+<video id="bg-video" autoplay muted loop playsinline>
+  <source src="YOUR_DIRECT_MP4_LINK" type="video/mp4">
+</video>
+
 
