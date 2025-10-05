@@ -1,5 +1,14 @@
-<!-- 🎥 Background Video from Cloudinary -->
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/romantic-bg_bcyne3.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+const envelope = document.getElementById('envelope');
+const video = document.getElementById('bg-video');
+
+envelope.addEventListener('click', () => {
+    envelope.classList.toggle('open');
+
+    if (envelope.classList.contains('open')) {
+        // Play background video
+        video.play().catch(err => console.log("Autoplay blocked for video:", err));
+    } else {
+        // Pause background video
+        video.pause();
+    }
+});
