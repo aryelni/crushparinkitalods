@@ -171,24 +171,22 @@
           I just wanted to tell you nga crush gihapon tika until now.  
           1 year and months najud tika crush shai, or I guess almost 2 years na (solid admirer).  
         </p>
-        <div id="moreText" style="display:none;">
-          <p>
-            My feelings for you haven’t changed since the time I started liking you back in 10th grade.  
-            I just can't make decisions and move forward until walay closure jud.  
-            <br><br>
-            What I'm hoping for is an answer from you — whether you’re already seeing someone  
-            or if this is simply closure between the two of us.  
-            <br><br>
-            The truth is, I can’t treat our friendship purely as platonic gyud.  
-            Siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
-            <br><br>
-            Sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
-            Knowing your response is super crucial for me, shai.  
-            <br><br>
-            I’ll accept whatever decision you make — I just need clarity. 💕
-          </p>
-          <p class="signature">– from someone who still admires you 💗</p>
-        </div>
+        <p>
+          My feelings for you haven’t changed since the time I started liking you back in 10th grade.  
+          I just can't make decisions and move forward until walay closure jud.  
+          <br><br>
+          What I'm hoping for is an answer from you — whether you’re already seeing someone  
+          or if this is simply closure between the two of us.  
+          <br><br>
+          The truth is, I can’t treat our friendship purely as platonic gyud.  
+          Siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
+          <br><br>
+          Sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
+          Knowing your response is super crucial for me, shai.  
+          <br><br>
+          I’ll accept whatever decision you make — I just need clarity. 💕
+        </p>
+        <p class="signature">– from someone who still admires you 💗</p>
       </div>
     </div>
   </div>
@@ -202,24 +200,20 @@
     const envelope = document.getElementById('envelope');
     const music = document.getElementById('bg-music');
     const video = document.getElementById('bg-video');
-    const moreText = document.getElementById('moreText');
+    const letterContent = document.getElementById('letter-content');
 
     window.addEventListener('load', () => {
       video.play().catch(err => console.log("Autoplay blocked:", err));
     });
 
     envelope.addEventListener('click', () => {
-      // open envelope
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
         music.play().catch(err => console.log("Autoplay blocked:", err));
-        // show only first paragraph for 3 seconds, then reveal the rest
-        setTimeout(() => {
-          moreText.style.display = "block";
-        }, 3000);
+        // scroll to top (only Dear + first paragraph visible)
+        letterContent.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         music.pause();
-        moreText.style.display = "none";
       }
     });
 
