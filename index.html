@@ -14,7 +14,6 @@
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
       background: black;
-      color: #333;
     }
 
     /* 🎥 Background Video */
@@ -27,26 +26,27 @@
       object-fit: cover;
       transform: translate(-50%, -50%);
       z-index: -1;
-      filter: brightness(0.5) saturate(1.1);
+      filter: brightness(0.45);
     }
 
-    /* ✉️ Envelope (resized to normal size) */
+    /* ✉️ Envelope - rectangle look */
     .envelope {
       position: relative;
-      width: 220px;
-      height: 180px;
+      width: 360px;
+      height: 220px;
       background: linear-gradient(145deg, #ff857a, #ff6f61);
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       cursor: pointer;
-      border-radius: 40px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease;
       overflow: hidden;
+      transition: transform 0.4s ease;
     }
 
     .envelope:hover {
       transform: scale(1.03);
     }
 
+    /* 🔺 Flap (top triangle) */
     .flap {
       position: absolute;
       top: 0;
@@ -54,46 +54,38 @@
       width: 100%;
       height: 100%;
       background: #e85a4f;
-      clip-path: polygon(0 0, 100% 0, 50% 50%);
-      transition: transform 0.6s ease;
+      clip-path: polygon(0 0, 100% 0, 50% 45%);
       transform-origin: top;
+      transition: transform 0.6s ease;
       z-index: 2;
     }
 
+    /* 💌 Letter inside */
     .letter {
       position: absolute;
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      width: 90%;
-      height: 90%;
+      width: 92%;
+      height: 92%;
       background: #fff;
-      padding: 16px;
+      border-radius: 6px;
+      padding: 20px;
       box-sizing: border-box;
-      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
       font-size: 16px;
-      line-height: 1.5;
-      text-align: justify;
-      overflow-y: auto;
-      transition: top 0.6s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      color: #333;
+      line-height: 1.6;
+      overflow: hidden;
+      transition: top 0.7s ease;
       z-index: 1;
-      color: #444;
     }
 
     .letter h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 28px;
       color: #b23a48;
-      margin-top: 0;
-    }
-
-    .envelope.open .flap {
-      transform: rotateX(180deg);
-    }
-
-    .envelope.open .letter {
-      top: 5%;
+      margin: 0 0 10px 0;
     }
 
     .signature {
@@ -101,8 +93,17 @@
       color: #b45f5f;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 14px;
+    }
+
+    /* 💗 Open state */
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      top: 8%;
     }
 
     /* ❤️ Floating Hearts */
@@ -122,15 +123,15 @@
     /* 📱 Responsive */
     @media (max-width: 600px) {
       .envelope {
-        width: 280px;
-        height: 160px;
+        width: 310px;
+        height: 190px;
       }
       .letter {
         font-size: 15px;
-        padding: 12px;
+        padding: 16px;
       }
       .letter h3 {
-        font-size: 22px;
+        font-size: 24px;
       }
     }
   </style>
@@ -152,18 +153,6 @@
         1 year and months najud tika crush shai, or I guess almost 2 years na (solid admirer).  
         <br><br>
         My feelings for you haven’t changed since the time I started liking you back in 10th grade.  
-        I just can't make decisions and move forward until walay closure jud.  
-        <br><br>
-        What I'm hoping for is an answer from you — whether you’re already seeing someone  
-        or if this is simply closure between the two of us.  
-        <br><br>
-        The truth is, I can’t treat our friendship purely as platonic gyud.  
-        Siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
-        <br><br>
-        Sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
-        Knowing your response is super crucial for me, shai.  
-        <br><br>
-        I’ll accept whatever decision you make — I just need clarity. 💕
       </p>
       <p class="signature">– from someone who still admires you 💗</p>
     </div>
@@ -179,12 +168,10 @@
     const music = document.getElementById('bg-music');
     const video = document.getElementById('bg-video');
 
-    // Play background video
     window.addEventListener('load', () => {
       video.play().catch(err => console.log("Autoplay blocked:", err));
     });
 
-    // Envelope click event
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
@@ -209,8 +196,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
