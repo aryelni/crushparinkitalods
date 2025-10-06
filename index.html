@@ -69,21 +69,22 @@
       width: 92%;
       height: 92%;
       background: #fff;
-      border-radius: 6px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 22px;
       box-sizing: border-box;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      font-size: 35px;
+      font-size: 18px;
       color: #333;
       line-height: 1.6;
-      overflow: hidden;
+      overflow-y: auto;
       transition: top 0.7s ease;
       z-index: 1;
+      scroll-behavior: smooth;
     }
 
     .letter h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-size: 22px;
       color: #b23a48;
       margin: 0 0 10px 0;
     }
@@ -94,7 +95,7 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       margin-top: 15px;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     /* 💗 Open state */
@@ -120,18 +121,26 @@
       100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
     }
 
-    /* 📱 Responsive */
+    /* 📱 Responsive adjustments for mobile */
     @media (max-width: 600px) {
       .envelope {
-        width: 310px;
-        height: 190px;
+        width: 320px;
+        height: 210px;
+        border-radius: 20px;
       }
+
       .letter {
-        font-size: 15px;
-        padding: 16px;
+        font-size: 14.5px;
+        padding: 14px;
+        line-height: 1.5;
       }
+
       .letter h3 {
-        font-size: 24px;
+        font-size: 18px;
+      }
+
+      .signature {
+        font-size: 13px;
       }
     }
   </style>
@@ -179,6 +188,7 @@
     const envelope = document.getElementById('envelope');
     const music = document.getElementById('bg-music');
     const video = document.getElementById('bg-video');
+    const letter = document.getElementById('letter');
 
     window.addEventListener('load', () => {
       video.play().catch(err => console.log("Autoplay blocked:", err));
@@ -188,6 +198,8 @@
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
         music.play().catch(err => console.log("Autoplay blocked:", err));
+        // auto-scroll to top (show Dear + first paragraph first)
+        letter.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         music.pause();
       }
@@ -208,9 +220,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
