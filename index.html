@@ -11,7 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Times New Roman', Times, serif;
       overflow: hidden;
       background: black;
     }
@@ -29,13 +29,13 @@
       filter: brightness(0.45);
     }
 
-    /* ✉️ Envelope */
+    /* ✉️ Envelope - rectangle look */
     .envelope {
       position: relative;
-      width: 560px;
-      height: 420px;
+      width: 360px;
+      height: 220px;
       background: linear-gradient(145deg, #ff857a, #ff6f61);
-      border-radius: 30px;
+      border-radius: 10px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       cursor: pointer;
       overflow: hidden;
@@ -46,7 +46,7 @@
       transform: scale(1.03);
     }
 
-    /* 🔺 Flap */
+    /* 🔺 Flap (top triangle) */
     .flap {
       position: absolute;
       top: 0;
@@ -54,44 +54,45 @@
       width: 100%;
       height: 100%;
       background: #e85a4f;
-      clip-path: polygon(0 0, 100% 0, 50% 45%);
+      clip-path: polygon(0 0, 100% 0, 50% 55%);
       transform-origin: top;
       transition: transform 0.6s ease;
       z-index: 2;
     }
 
-    /* 💌 Letter */
+    /* 💌 Letter inside */
     .letter {
       position: absolute;
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
       width: 92%;
-      height: 92%;
+      height: 85%;
       background: #fff;
-      border-radius: 10px;
+      border-radius: 12px;
+      padding: 20px;
       box-sizing: border-box;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      font-size: 18px;
+      font-size: 16px;
       color: #333;
       line-height: 1.6;
-      overflow: hidden;
-      transition: top 0.8s ease;
+      overflow-y: auto; /* ✅ allows scrolling */
+      transition: top 0.7s ease;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
+      scroll-behavior: smooth;
     }
 
-    .letter-content {
-      overflow-y: auto;
-      height: 100%;
-      padding: 22px;
-      scroll-behavior: smooth;
+    .letter::-webkit-scrollbar {
+      width: 6px;
+    }
+    .letter::-webkit-scrollbar-thumb {
+      background: #ff6f61;
+      border-radius: 10px;
     }
 
     .letter h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: 28px;
       color: #b23a48;
       margin: 0 0 10px 0;
     }
@@ -102,7 +103,7 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       margin-top: 15px;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     /* 💗 Open state */
@@ -131,25 +132,15 @@
     /* 📱 Responsive */
     @media (max-width: 600px) {
       .envelope {
-        width: 320px;
-        height: 210px;
-        border-radius: 20px;
+        width: 330px;
+        height: 230px;
       }
-
-      .letter {
-        font-size: 14px;
-      }
-
-      .letter-content {
+      .letter h {
+        font-size: 18px;
         padding: 16px;
       }
-
       .letter h3 {
-        font-size: 18px;
-      }
-
-      .signature {
-        font-size: 13px;
+        font-size: 24px;
       }
     }
   </style>
@@ -165,31 +156,28 @@
   <div class="envelope" id="envelope">
     <div class="flap"></div>
     <div class="letter" id="letter">
-      <div class="letter-content" id="letter-content">
-        <h3>Dear Shaira,</h3>
-        <p>
-          I just wanted to tell you nga crush gihapon tika until now.  
-          1 year and months najud tika crush shai, or I guess almost 2 years na (solid admirer).  
-        </p>
-        <p>
-          My feelings for you haven’t changed since the time I started liking you back in 10th grade.  
-          I just can't make decisions and move forward until walay closure jud.  
-          <br><br>
-          What I'm hoping for is an answer from you — whether you’re already seeing someone  
-          or if this is simply closure between the two of us.  
-          <br><br>
-          The truth is, I can’t treat our friendship purely as platonic gyud.  
-          Siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
-          <br><br>
-          Sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
-          Knowing your response is super crucial for me, shai.  
-          <br><br>
-          I’ll accept whatever decision you make — I just need clarity. 💕
-        </p>
-        <p class="signature">– from someone who still admires you 💗</p>
-      </div>
+      <h3>Dear Shaira,</h3>
+      <p>
+        I just wanted to tell you nga crush gihapon tika until now.  
+         I guess almost 2 years na tika nga crush, shai.  
+        <br><br>
+        My feelings for you haven’t changed since the time I started liking you, back in 10th grade. I just can't make decisions and move forward until walay closure usab jud.  
+        <br><br>
+        What I'm hoping for is an answer from you — whether you’re already seeing someone  
+        or if this is simply closure between the two of us again.  
+        <br><br>
+        The truth is, I can’t treat our friendship purely as platonic gyud.  
+        Siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
+        <br><br>
+        Sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
+        Knowing your response is super crucial for me, shai.  
+        <br><br>
+        I’ll accept whatever decision you make — I just need clarity. 💕
+      </p>
+      <p class="signature">– from someone who still admires you 💗</p>
     </div>
   </div>
+   
 
   <!-- 🎵 Background Music -->
   <audio id="bg-music" loop>
@@ -200,7 +188,6 @@
     const envelope = document.getElementById('envelope');
     const music = document.getElementById('bg-music');
     const video = document.getElementById('bg-video');
-    const letterContent = document.getElementById('letter-content');
 
     window.addEventListener('load', () => {
       video.play().catch(err => console.log("Autoplay blocked:", err));
@@ -210,8 +197,6 @@
       envelope.classList.toggle('open');
       if (envelope.classList.contains('open')) {
         music.play().catch(err => console.log("Autoplay blocked:", err));
-        // scroll to top (only Dear + first paragraph visible)
-        letterContent.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         music.pause();
       }
