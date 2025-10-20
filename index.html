@@ -1,225 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>pindota pls 💌</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">  
+  <style>  
+    body {  
+      margin: 0;  
+      height: 100vh;  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      font-family: Georgia, 'Times New Roman', Times, serif;  
+      overflow: hidden;  
+      background: black;  
+    }  /* 🎥 Background Video */  
+#bg-video {  
+  position: fixed;  
+  top: 50%;  
+  left: 50%;  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  transform: translate(-50%, -50%);  
+  z-index: -1;  
+  filter: brightness(0.45);  
+}  
 
-  <!-- 🛠️ Added these lines to hide preview when sharing link -->
-  <meta name="description" content="">
-  <meta property="og:title" content="pindota pls 💌">
-  <meta property="og:description" content="">
-  <meta name="twitter:title" content="pindota pls 💌">
-  <meta name="twitter:description" content="">
+/* ✉️ Envelope - rectangle look */  
+.envelope {  
+  position: relative;  
+  width: 360px;  
+  height: 220px;  
+  background: linear-gradient(145deg, #ff857a, #ff6f61);  
+  border-radius: 20px;  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);  
+  cursor: pointer;  
+  overflow: hidden;  
+  transition: transform 0.4s ease;  
+}  
 
-  <title>pindota pls 💌</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      overflow: hidden;
-      background: black;
-    }
+.envelope:hover {  
+  transform: scale(1.03);  
+}  
 
-    /* 🎥 Background Video */
-    #bg-video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      filter: brightness(0.45);
-    }
+/* 🔺 Flap (top triangle) */  
+.flap {  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  background: #e85a4f;  
+  clip-path: polygon(0 0, 100% 0, 50% 55%);  
+  transform-origin: top;  
+  transition: transform 0.6s ease;  
+  z-index: 2;  
+}  
 
-    /* ✉️ Envelope - rectangle look */
-    .envelope {
-      position: relative;
-      width: 360px;
-      height: 220px;
-      background: linear-gradient(145deg, #ff857a, #ff6f61);
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.4s ease;
-    }
+/* 💌 Letter inside */  
+.letter {  
+  position: absolute;  
+  top: 100%;  
+  left: 50%;  
+  transform: translateX(-50%);  
+  width: 92%;  
+  height: 85%;  
+  background: #fff;  
+  border-radius: 22px;  
+  padding: 20px;  
+  box-sizing: border-box;  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);  
+  font-size: 16px;  
+  color: #333;  
+  line-height: 1.6;  
+  overflow-y: auto; /* ✅ allows scrolling */  
+  transition: top 0.7s ease;  
+  z-index: 1;  
+  scroll-behavior: smooth;  
+}  
 
-    .envelope:hover {
-      transform: scale(1.03);
-    }
+.letter::-webkit-scrollbar {  
+  width: 6px;  
+}  
+.letter::-webkit-scrollbar-thumb {  
+  background: #ff6f61;  
+  border-radius: 20px;  
+}  
 
-    /* 🔺 Flap (top triangle) */
-    .flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #e85a4f;
-      clip-path: polygon(0 0, 100% 0, 50% 55%);
-      transform-origin: top;
-      transition: transform 0.6s ease;
-      z-index: 2;
-    }
+.letter h3 {  
+  font-family: 'Playfair Display', serif;  
+  font-size: 28px;  
+  color: #b23a48;  
+  margin: 0 0 10px 0;  
+}  
 
-    /* 💌 Letter inside */
-    .letter {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 92%;
-      height: 85%;
-      background: #fff;
-      border-radius: 22px;
-      padding: 20px;
-      box-sizing: border-box;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      font-size: 16px;
-      color: #333;
-      line-height: 1.6;
-      overflow-y: auto; /* ✅ allows scrolling */
-      transition: top 0.7s ease;
-      z-index: 1;
-      scroll-behavior: smooth;
-    }
+.signature {  
+  text-align: right;  
+  color: #b45f5f;  
+  font-family: 'Playfair Display', serif;  
+  font-style: italic;  
+  margin-top: 15px;  
+  font-size: 38px;  
+}  
 
-    .letter::-webkit-scrollbar {
-      width: 6px;
-    }
-    .letter::-webkit-scrollbar-thumb {
-      background: #ff6f61;
-      border-radius: 20px;
-    }
+/* 💗 Open state */  
+.envelope.open .flap {  
+  transform: rotateX(180deg);  
+}  
 
-    .letter h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      color: #b23a48;
-      margin: 0 0 10px 0;
-    }
+.envelope.open .letter {  
+  top: 8%;  
+}  
 
-    .signature {
-      text-align: right;
-      color: #b45f5f;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      margin-top: 15px;
-      font-size: 38px;
-    }
+/* ❤️ Floating Hearts */  
+.heart {  
+  position: absolute;  
+  color: #ff3366;  
+  font-size: 22px;  
+  animation: float 4s linear infinite;  
+  opacity: 0.8;  
+}  
 
-    /* 💗 Open state */
-    .envelope.open .flap {
-      transform: rotateX(180deg);
-    }
+@keyframes float {  
+  0% { transform: translateY(0) scale(1); opacity: 1; }  
+  100% { transform: translateY(-600px) scale(1.5); opacity: 0; }  
+}  
 
-    .envelope.open .letter {
-      top: 8%;
-    }
+/* 📱 Responsive */  
+@media (max-width: 1000px) {  
+  .envelope {  
+    width: 700px;  
+    height: 500px;  
+  }  
+  .letter {  
+    font-size: 35px;  
+    padding: 16px;  
+  }  
+  .letter h3 {  
+    font-size: 54px;  
+  }  
+}
 
-    /* ❤️ Floating Hearts */
-    .heart {
-      position: absolute;
-      color: #ff3366;
-      font-size: 22px;
-      animation: float 4s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
-    }
-
-    /* 📱 Responsive */
-    @media (max-width: 1000px) {
-      .envelope {
-        width: 700px;
-        height: 500px;
-      }
-      .letter {
-        font-size: 35px;
-        padding: 16px;
-      }
-      .letter h3 {
-        font-size: 54px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 🎥 Background Video -->
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/romantic-bg_bcyne3.mp4" type="video/mp4">
-  </video>
-
-  <!-- ✉️ Envelope -->
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-    <div class="letter" id="letter">
-      <h3>Dear Shaira,</h3>
-      <p>
-        i just wanted to tell you nga crush gihapon tika until now and i guess almost 2 years na tika nga crush, shai.  
-        <br><br>
-        my feelings for you haven’t changed since the time i started liking you, back in 10th grade. i just can't make decisions and move forward until walay closure usab jud.  
-        <br><br>
-        what I'm hoping for is an answer from you — whether you’re already seeing someone or if this is simply closure between the two of us again.  
-        <br><br>
-        the truth is, i can’t treat our friendship purely as platonic gyud.  
-        siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.  
-        <br><br>
-        sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.  
-        knowing your response is super crucial for me, shai.  
-        <br><br>
-        i’ll accept whatever decision you make — i just need clarity. 💕
-      </p>
-      <p class="signature">– from someone who still admires you 💗</p>
-    </div>
-  </div>
-   
-
-  <!-- 🎵 Background Music -->
-  <audio id="bg-music" loop>
-    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/v1759680311/burnout_ya25vl.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    const envelope = document.getElementById('envelope');
-    const music = document.getElementById('bg-music');
-    const video = document.getElementById('bg-video');
-
-    window.addEventListener('load', () => {
-      video.play().catch(err => console.log("Autoplay blocked:", err));
-    });
-
-    envelope.addEventListener('click', () => {
-      envelope.classList.toggle('open');
-      if (envelope.classList.contains('open')) {
-        music.play().catch(err => console.log("Autoplay blocked:", err));
-      } else {
-        music.pause();
-      }
-    });
-
-    // Floating hearts animation
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = "❤";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.top = window.innerHeight + "px";
-      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }
-    setInterval(createHeart, 600);
-  </script>
-</body>
-</html>
+  </style>  
+</head>  
+<body>    <!-- 🎥 Background Video -->    <video id="bg-video" autoplay muted loop playsinline>  
+    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/romantic-bg_bcyne3.mp4" type="video/mp4">  
+  </video>    <!-- ✉️ Envelope -->    <div class="envelope" id="envelope">  
+    <div class="flap"></div>  
+    <div class="letter" id="letter">  
+      <h3>Dear Shaira,</h3>  
+      <p>  
+        i just wanted to tell you nga crush gihapon tika until now and i guess almost 2 years na tika nga crush, shai.    
+        <br><br>  
+        my feelings for you haven’t changed since the time i started liking you, back in 10th grade. i just can't make decisions and move forward until walay closure usab jud.    
+        <br><br>  
+        what I'm hoping for is an answer from you — whether you’re already seeing someone or if this is simply closure between the two of us again.    
+        <br><br>  
+        the truth is, i can’t treat our friendship purely as platonic gyud.    
+        siguro, maundang na nako ang paghatag ug meaning sa tanan if ever ma-reject balik.    
+        <br><br>  
+        sorry if tungod sakong ka-delusional, maapektohan nasad ka or what we have now.    
+        knowing your response is super crucial for me, shai.    
+        <br><br>  
+        i’ll accept whatever decision you make — i just need clarity. 💕  
+      </p>  
+      <p class="signature">– from someone who still admires you 💗</p>  
+    </div>  
+  </div>    <!-- 🎵 Background Music -->    <audio id="bg-music" loop>  
+    <source src="https://res.cloudinary.com/dithz3pcp/video/upload/v1759680311/burnout_ya25vl.mp3" type="audio/mpeg">  
+  </audio>    <script>  
+    const envelope = document.getElementById('envelope');  
+    const music = document.getElementById('bg-music');  
+    const video = document.getElementById('bg-video');  
+  
+    window.addEventListener('load', () => {  
+      video.play().catch(err => console.log("Autoplay blocked:", err));  
+    });  
+  
+    envelope.addEventListener('click', () => {  
+      envelope.classList.toggle('open');  
+      if (envelope.classList.contains('open')) {  
+        music.play().catch(err => console.log("Autoplay blocked:", err));  
+      } else {  
+        music.pause();  
+      }  
+    });  
+  
+    // Floating hearts animation  
+    function createHeart() {  
+      const heart = document.createElement('div');  
+      heart.classList.add('heart');  
+      heart.innerHTML = "❤";  
+      heart.style.left = Math.random() * window.innerWidth + "px";  
+      heart.style.top = window.innerHeight + "px";  
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";  
+      document.body.appendChild(heart);  
+      setTimeout(() => heart.remove(), 4000);  
+    }  
+    setInterval(createHeart, 600);  
+  </script>  </body>  
+</html>  
